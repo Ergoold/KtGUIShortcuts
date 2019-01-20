@@ -1,4 +1,6 @@
-package guishortcuts
+package test
+
+import guishortcuts.*
 
 fun main(args: Array<String>) {
     val frame = create frame "test"

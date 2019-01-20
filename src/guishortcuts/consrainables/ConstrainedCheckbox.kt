@@ -1,5 +1,6 @@
-package guishortcuts
+package guishortcuts.consrainables
 
+import guishortcuts.make
 import java.awt.GridBagConstraints
 import javax.swing.*
 

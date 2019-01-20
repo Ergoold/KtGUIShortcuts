@@ -1,7 +1,7 @@
-package guishortcuts
+package guishortcuts.consrainables
 
+import guishortcuts.make
 import java.awt.GridBagConstraints
-import java.awt.event.*
 import javax.swing.*
 
 class ConstrainedButton(text: String): JButton(text), Constrainable {

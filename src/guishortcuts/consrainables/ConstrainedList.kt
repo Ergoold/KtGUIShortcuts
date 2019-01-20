@@ -1,10 +1,11 @@
-package guishortcuts
+package guishortcuts.consrainables
 
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
-import kotlin.random.Random
 
-class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), Constrainable {
+class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()),
+    Constrainable {
     override val GBC: GridBagConstraints = GridBagConstraints()
     private var listModel = DefaultListModel<String>()
 

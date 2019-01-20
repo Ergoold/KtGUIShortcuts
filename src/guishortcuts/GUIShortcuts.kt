@@ -1,5 +1,6 @@
 package guishortcuts
 
+import guishortcuts.consrainables.*
 import java.awt.*
 import javax.swing.*
 
