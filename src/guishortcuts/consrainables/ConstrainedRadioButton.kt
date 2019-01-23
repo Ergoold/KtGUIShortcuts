@@ -11,6 +11,10 @@ class ConstrainedRadioButton(text: String): JRadioButton(text), Constrainable {
         frame.add(this, GBC)
     }
 
+    infix fun to(radioGroup: ButtonGroup) {
+        radioGroup.add(this)
+    }
+
     infix fun does(func: () -> Unit) {
         addActionListener {func()}
     }
