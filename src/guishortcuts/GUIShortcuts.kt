@@ -73,6 +73,11 @@ infix fun Int.combobox(text: Array<String>): ConstrainedCombobox {
     return ConstrainedCombobox(text)
 }
 
+infix fun Int.radiobutton(text: String): ConstrainedRadioButton {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedRadioButton(text)
+}
+
 infix fun Int.list(text: Array<String>): ConstrainedList {
     if(this != create) throw Exception("Use 'create' when creating components")
     return ConstrainedList(text)
