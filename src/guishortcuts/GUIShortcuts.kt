@@ -83,6 +83,10 @@ infix fun Int.list(text: Array<String>): ConstrainedList {
     return ConstrainedList(text)
 }
 
+fun slider(min: Int, max: Int): ConstrainedSlider {
+    return ConstrainedSlider(min, max)
+}
+
 fun options(vararg options: String): Array<String> {
     return options as Array<String>
 }
