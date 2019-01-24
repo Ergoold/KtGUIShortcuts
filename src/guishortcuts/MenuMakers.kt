@@ -5,9 +5,9 @@ import javax.swing.*
 val bar = 0
 val separator = 1
 val menu = 2
-val group = 3
-val check = 4
+val check = 3
 val radio = 0.0
+val group = 1.0
 
 infix fun Int.menu(kw: Int): JMenuBar {
     if(this != create) throw Exception("Use 'create menu bar' to create a menu bar")
@@ -43,9 +43,15 @@ infix fun Double.item(text: String): JRadioButtonMenuItem {
     return JRadioButtonMenuItem(text)
 }
 
-infix fun Double.item(value: Int): ButtonGroup {
+infix fun Double.item(value: Double): ButtonGroup {
     if(this != radio) throw Exception("Use 'radio' to create radio button groups")
     if(value != group) throw Exception("Use 'group' to create radio button groups")
+    return ButtonGroup()
+}
+
+infix fun Int.radiobutton(other: Double): ButtonGroup {
+    if(this != create) throw Exception("Use 'create' to create radio button groups")
+    if(other != group) throw Exception("Use 'group' to create radio button groups")
     return ButtonGroup()
 }
 
