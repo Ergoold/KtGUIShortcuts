@@ -14,3 +14,8 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
 infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
     return slider
 }
+
+infix fun Int.horizontal(slider: ConstrainedSlider): ConstrainedSlider {
+    slider.orientation = JSlider.HORIZONTAL
+    return slider
+}
