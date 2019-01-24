@@ -19,3 +19,9 @@ infix fun Int.horizontal(slider: ConstrainedSlider): ConstrainedSlider {
     slider.orientation = JSlider.HORIZONTAL
     return slider
 }
+
+infix fun Int.vertical(slider: ConstrainedSlider): ConstrainedSlider {
+    slider.orientation = JSlider.VERTICAL
+    return slider
+}
+
