@@ -43,4 +43,3 @@ infix fun Int.deselected(radiobutton: ConstrainedRadioButton) {
     if(this != make) throw Exception("Use 'make' when attempting to set component isSelected")
     radiobutton.isSelected = false
 }
-
