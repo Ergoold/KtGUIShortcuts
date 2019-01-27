@@ -2,8 +2,10 @@ package guishortcuts.consrainables
 
 import java.awt.GridBagConstraints
 import java.lang.Exception
+import java.util.*
 import javax.swing.*
 import javax.swing.event.ChangeEvent
+import kotlin.collections.HashMap
 
 class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
     override val GBC: GridBagConstraints = GridBagConstraints()
@@ -40,6 +42,16 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
         if(kw != selected) throw Exception("Use 'selected' to get the selected value from a slider")
         return value
     }
+
+    infix fun put(labels: Array<String>) {
+        val diff = if(labels.size > 1) (maximum - minimum) / (labels.size - 1) else 0
+
+        val dict = Hashtable<Int, JLabel>()
+        for(i in 0 until labels.size)
+            dict.put(minimum + diff * i, JLabel(labels[i]))
+
+        labelTable = dict
+    }
 }
 
 val disable = 0
@@ -62,4 +74,8 @@ infix fun Int.vertical(slider: ConstrainedSlider): ConstrainedSlider {
 
 fun spacing(major: Int, minor: Int): Pair<Int, Int> {
     return Pair(major, minor)
+}
+
+fun labels(vararg labels: String): Array<String> {
+    return arrayOf(*labels)
 }
