@@ -9,6 +9,10 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
     infix fun to(frame: JFrame) {
         frame.add(this, GBC)
     }
+
+    infix fun set(to: Int) {
+        value = to
+    }
 }
 
 infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
@@ -24,4 +28,3 @@ infix fun Int.vertical(slider: ConstrainedSlider): ConstrainedSlider {
     slider.orientation = JSlider.VERTICAL
     return slider
 }
-
