@@ -83,6 +83,15 @@ infix fun Int.list(text: Array<String>): ConstrainedList {
     return ConstrainedList(text)
 }
 
+fun slider(min: Int, max: Int): ConstrainedSlider {
+    val slider = ConstrainedSlider(min, max)
+    slider.majorTickSpacing = max - min
+    slider.minorTickSpacing = (max - min) / 2
+    slider.paintTicks = true
+    slider.paintLabels = true
+    return slider
+}
+
 fun options(vararg options: String): Array<String> {
     return options as Array<String>
 }
