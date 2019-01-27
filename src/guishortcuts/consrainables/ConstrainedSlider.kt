@@ -1,7 +1,9 @@
 package guishortcuts.consrainables
 
 import java.awt.GridBagConstraints
+import java.lang.Exception
 import javax.swing.*
+import javax.swing.event.ChangeEvent
 
 class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
     override val GBC: GridBagConstraints = GridBagConstraints()
@@ -26,10 +28,23 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
         majorTickSpacing = spacing.first
         minorTickSpacing = spacing.second
     }
+
+    infix fun does(func: () -> Unit) {
+        addChangeListener {
+            if(!(it.source as ConstrainedSlider).valueIsAdjusting)
+                func()
+        }
+    }
+
+    infix fun get(kw: Int): Int {
+        if(kw != selected) throw Exception("Use 'selected' to get the selected value from a slider")
+        return value
+    }
 }
 
 val disable = 0
 val enable = 1
+val selected = 2
 
 infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
     return slider
