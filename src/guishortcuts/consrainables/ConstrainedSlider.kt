@@ -13,7 +13,18 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
     infix fun set(to: Int) {
         value = to
     }
+
+    infix fun label(action: Int) {
+        paintLabels = action == enable
+    }
+
+    infix fun ticks(action: Int) {
+        paintTicks = action == enable
+    }
 }
+
+val disable = 0
+val enable = 1
 
 infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
     return slider
