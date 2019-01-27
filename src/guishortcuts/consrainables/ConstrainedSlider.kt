@@ -21,6 +21,11 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
     infix fun ticks(action: Int) {
         paintTicks = action == enable
     }
+
+    infix fun set(spacing: Pair<Int, Int>) {
+        majorTickSpacing = spacing.first
+        minorTickSpacing = spacing.second
+    }
 }
 
 val disable = 0
@@ -38,4 +43,8 @@ infix fun Int.horizontal(slider: ConstrainedSlider): ConstrainedSlider {
 infix fun Int.vertical(slider: ConstrainedSlider): ConstrainedSlider {
     slider.orientation = JSlider.VERTICAL
     return slider
+}
+
+fun spacing(major: Int, minor: Int): Pair<Int, Int> {
+    return Pair(major, minor)
 }
