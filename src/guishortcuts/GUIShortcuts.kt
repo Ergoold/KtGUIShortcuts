@@ -83,6 +83,11 @@ infix fun Int.list(text: Array<String>): ConstrainedList {
     return ConstrainedList(text)
 }
 
+infix fun Int.spinner(text: Array<String>): ConstrainedSpinner {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedSpinner(text)
+}
+
 fun slider(min: Int, max: Int): ConstrainedSlider {
     val slider = ConstrainedSlider(min, max)
     slider.majorTickSpacing = max - min
