@@ -10,7 +10,7 @@ import guishortcuts.*
 import guishortcuts.consrainables.*
 
 fun main(args: Array<String>) {
-    val myFrame = create frame "test"
+    val myFrame = create frame "Hello, World!"
     window init myFrame
 
     val myLabel = create label "Hello, World!"
@@ -35,10 +35,10 @@ These are `import` statements that import the guishortcuts package and its subpa
 
 #### Inside the main function
 ```kotlin
-val myFrame = create frame "test"
+val myFrame = create frame "Hello, World!"
 window init myFrame
 ```
-These statements create and instantiate a `frame` called `myFrame`. When initiated with `window init <frame>`, the `frame` is automatically displayed. However, you won't see it on screen if you run the program now. This is because there are no `component`s on the `frame`, and the `init` command `pack`s the frame - sets its size to the exact size all of the `component`s inside need. There are currently no `component`s, so the `frame` has no width or height. While you could negate this problem by adding `component`s to the `frame` before initiating, I highly recommend you do it in this order so that you can control your `frame`'s size more easily later on.
+These statements create and instantiate a `frame` called `myFrame` with the title `Hello, World!`. When initiated with `window init <frame>`, the `frame` is automatically displayed. However, you won't see it on screen if you run the program now. This is because there are no `component`s on the `frame`, and the `init` command `pack`s the frame - sets its size to the exact size all of the `component`s inside need. There are currently no `component`s, so the `frame` has no width or height. While you could negate this problem by adding `component`s to the `frame` before initiating, I highly recommend you do it in this order so that you can control your `frame`'s size more easily later on.
 
 ```kotlin
 val myLabel = create label "Hello, World!"
