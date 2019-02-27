@@ -15,6 +15,8 @@ class ConstrainedButton(text: String): JButton(text), Constrainable {
     
     /**
      * Add this button to a frame.
+     *
+     * @param frame frame this button will be added to.
      */
     infix fun to(frame: JFrame) {
         frame.add(this, GBC)
@@ -22,6 +24,8 @@ class ConstrainedButton(text: String): JButton(text), Constrainable {
     
     /**
      * Add an action listener to this button.
+     *
+     * @param func the function to be executed when the button is pressed.
      */
     infix fun does(func: () -> Unit) {
         addActionListener {func()}
@@ -30,6 +34,10 @@ class ConstrainedButton(text: String): JButton(text), Constrainable {
 
 /**
  * This function is purely for cosmetic purposes.
+ *
+ * @param button the button to be returned.
+ *
+ * @return the button.
  */
 infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
     return button
@@ -37,6 +45,8 @@ infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
 
 /**
  * Enable the button. Int must equal to the variable make.
+ *
+ * @param button the button to enable.
  */
 infix fun Int.enabled(button: ConstrainedButton) {
     if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
@@ -45,6 +55,8 @@ infix fun Int.enabled(button: ConstrainedButton) {
 
 /**
  * Disable the button. Int must equal to the variable make.
+ *
+ * @param button the button to disable.
  */
 infix fun Int.disabled(button: ConstrainedButton) {
     if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
