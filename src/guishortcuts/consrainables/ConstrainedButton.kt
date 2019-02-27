@@ -16,7 +16,7 @@ class ConstrainedButton(text: String): JButton(text), Constrainable {
     /**
      * Add this button to a frame.
      *
-     * @param frame frame this button will be added to.
+     * @param frame the frame this button will be added to.
      */
     infix fun to(frame: JFrame) {
         frame.add(this, GBC)
