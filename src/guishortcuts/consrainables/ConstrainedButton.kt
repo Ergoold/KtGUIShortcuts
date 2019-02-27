@@ -44,7 +44,8 @@ infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
 }
 
 /**
- * Enable the button. Int must equal to the variable make.
+ * Enable the button.
+ * Int must equal to the variable make.
  *
  * @param button the button to enable.
  */
