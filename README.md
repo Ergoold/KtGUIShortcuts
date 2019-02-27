@@ -67,7 +67,7 @@ This will make `myFrame` fullscreen.
 #### Creating components
 To create a component in KtGUIShortcuts, use the following code:
 ```kotlin
-val mainFrame = create <component> <args>
+val <componentName> = create <component> <args>
 ```
 
 #### Adding a component to another component
@@ -115,4 +115,4 @@ colweight(<colweight>)
 rowweight(<rowweight>)
 ```
 
-It is highly recommended to use `coordinates`, `cells` and `weights` individually to set constraints for your components.
+I recommend you use `coordinates`, `cells` and `weights` individually to set constraints for your components.
