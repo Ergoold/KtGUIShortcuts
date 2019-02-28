@@ -52,9 +52,21 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
         if(kw != content) throw Exception("Use 'text' when getting the text from a text field")
         return text
     }
+    
+    infix fun align(dir: Int) {
+        horizontalAlignment = when(dir) {
+            start -> JTextField.LEADING
+            center -> JTextField.CENTER
+            end -> JTextField.TRAILING
+            else -> throw Exception("Use one of 'start', 'center' and 'end' to set text field alignment")
+        }
+    }
 }
 
 const val content = 0
+const val start = 1
+const val center = 2
+const val end = 3
 
 /**
  * This function is purely for cosmetic purposes.
