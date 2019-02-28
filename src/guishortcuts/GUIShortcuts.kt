@@ -219,7 +219,8 @@ fun slider(min: Int, max: Int): ConstrainedSlider {
  *
  * @return a ConstrainedTextField with the supplied content.
  */
-fun textfield(content: String): ConstrainedTextField {
+infix fun Int.textfield(content: String): ConstrainedTextField {
+    if(this != create) throw Exception("Use 'create' when creating components")
     val textfield = ConstrainedTextField(content)
     return textfield
 }
