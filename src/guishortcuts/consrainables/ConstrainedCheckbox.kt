@@ -36,6 +36,8 @@ class ConstrainedCheckbox(text: String): JCheckBox(text), Constrainable {
  * This function is purely for cosmetic purposes.
  *
  * @param checkbox the checkbox to return.
+ *
+ * @return the checkbox it was given.
  */
 infix fun Int.add(checkbox: ConstrainedCheckbox): ConstrainedCheckbox {
     return checkbox
