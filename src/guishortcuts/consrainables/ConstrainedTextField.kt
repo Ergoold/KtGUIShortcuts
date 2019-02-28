@@ -33,6 +33,15 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
     }
     
     /**
+     * Set this text field's width in columns.
+     *
+     * @param cols the text field's new width in columns.
+     */
+    infix fun set(cols: Int) {
+        this.columns = cols
+    }
+    
+    /**
      * Get this text field's content.
      *
      * @param kw must be equal to the variable content.
@@ -56,6 +65,17 @@ const val content = 0
  */
 fun content(text: String): String {
     return text
+}
+
+/**
+ * This function is purely for cosmetic purposes.
+ *
+ * @param cols the int to return.
+ *
+ * @return the int it was given.
+ */
+fun width(cols: Int): Int {
+    return cols
 }
 
 /**
