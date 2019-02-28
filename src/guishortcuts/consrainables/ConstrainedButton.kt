@@ -37,7 +37,7 @@ class ConstrainedButton(text: String): JButton(text), Constrainable {
  *
  * @param button the button to be returned.
  *
- * @return the button.
+ * @return the button it was given.
  */
 infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
     return button
