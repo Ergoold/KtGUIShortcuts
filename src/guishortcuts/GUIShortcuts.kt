@@ -212,6 +212,20 @@ fun slider(min: Int, max: Int): ConstrainedSlider {
 }
 
 /**
+ * Create a text field.
+ * Int must be equal to the variable create.
+ *
+ * @param content the initial content of the text field.
+ *
+ * @return a ConstrainedTextField with the supplied content.
+ */
+infix fun Int.textfield(content: String): ConstrainedTextField {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    val textfield = ConstrainedTextField(content)
+    return textfield
+}
+
+/**
  * Turn a vararg of Strings into an Array<String>.
  *
  * @param options a vararg of the Strings to put in the array.
