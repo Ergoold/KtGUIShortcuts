@@ -42,7 +42,7 @@ class ConstrainedRadioButton(text: String): JRadioButton(text), Constrainable {
 }
 
 /**
- * This function is properly for cosmetic purposes.
+ * This function is purely for cosmetic purposes.
  *
  * @param radiobutton the radio button to return.
  *
