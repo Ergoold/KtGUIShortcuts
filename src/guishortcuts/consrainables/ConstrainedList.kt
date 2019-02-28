@@ -122,7 +122,7 @@ val index = 0.0
  *
  * @param list the list to return.
  *
- * @return the list it eas given.
+ * @return the list it was given.
  */
 infix fun Int.add(list: ConstrainedList): ConstrainedList {
     return list
