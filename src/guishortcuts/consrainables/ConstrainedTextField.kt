@@ -53,6 +53,15 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
         return text
     }
     
+    /**
+     * Change the alignment of content in the text field.
+     * Parameter must be equal to one of the following variables:
+     * start: The start of the text field.
+     * center: The center of the text field.
+     * end: The end of the text field.
+     *
+     * @param dir the alignment of the content (start, end or center).
+     */
     infix fun align(dir: Int) {
         horizontalAlignment = when(dir) {
             start -> JTextField.LEADING
