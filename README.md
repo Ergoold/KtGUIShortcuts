@@ -51,7 +51,9 @@ myFrame set size(320, 180)
 ```
 This last statement in the main function sets the size of `myFrame` to 320 pixels wide by 180 pixels tall. We recommend putting this statement at the end of your program, so that you aren't concerned by the size of your `frame` during the creation of the `component`s.
 
-Possible alternatives to `set size` are:
+There are some alternatives to `set size`, which affect the window size in different ways.
+
+##### Alternatives to `set size`:
 ```kotlin
 window pack myFrame
 ```
