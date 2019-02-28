@@ -2,6 +2,10 @@ package guishortcuts.consrainables
 
 import java.awt.GridBagConstraints
 
+/**
+ * Get a GridBagConstraints with all supplied constraints.
+ * Weights are set as Doubles.
+ */
 fun constraints(col: Int, row: Int, width: Int, height: Int, colweight: Double, rowweight: Double): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -15,6 +19,10 @@ fun constraints(col: Int, row: Int, width: Int, height: Int, colweight: Double, 
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with all supplied constraints.
+ * Weights are set as Ints.
+ */
 fun constraints(col: Int, row: Int, width: Int, height: Int, colweight: Int, rowweight: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -28,6 +36,9 @@ fun constraints(col: Int, row: Int, width: Int, height: Int, colweight: Int, row
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied coordinates and size.
+ */
 fun constraints(col: Int, row: Int, width: Int, height: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -39,6 +50,9 @@ fun constraints(col: Int, row: Int, width: Int, height: Int): GridBagConstraints
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied coordinates set.
+ */
 fun coordinates(col: Int, row: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -51,8 +65,14 @@ fun coordinates(col: Int, row: Int): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Alias of coordinates.
+ */
 fun coords(col: Int, row: Int): GridBagConstraints = coordinates(col, row)
 
+/**
+ * Get a GridBagConstraints with the supplied cell width & height set.
+ */
 fun cells(width: Int, height: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -62,6 +82,10 @@ fun cells(width: Int, height: Int): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied weights set.
+ * Weights are set as Doubles.
+ */
 fun weights(colweight: Double, rowweight: Double): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -74,6 +98,10 @@ fun weights(colweight: Double, rowweight: Double): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied weights set.
+ * Weights are set as Ints.
+ */
 fun weights(colweight: Int, rowweight: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -86,6 +114,9 @@ fun weights(colweight: Int, rowweight: Int): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied column set.
+ */
 fun col(col: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -97,6 +128,9 @@ fun col(col: Int): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied row set.
+ */
 fun row(row: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -108,6 +142,10 @@ fun row(row: Int): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied column weight set.
+ * Weight set as Int.
+ */
 fun colweight(colweight: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -119,6 +157,10 @@ fun colweight(colweight: Int): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied row weight set.
+ * Weight set as Int.
+ */
 fun rowweight(rowweight: Int): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -130,6 +172,10 @@ fun rowweight(rowweight: Int): GridBagConstraints {
     return GBC
 }
 
+/**
+ * Get a GridBagConstraints with the supplied column weight set.
+ * Weight set as Double.
+ */
 fun colweight(colweight: Double): GridBagConstraints {
     val GBC = GridBagConstraints()
 
@@ -141,6 +187,11 @@ fun colweight(colweight: Double): GridBagConstraints {
     return GBC
 }
 
+/**
+ *
+ * Get a GridBagConstraints with the supplied row weight set.
+ * Weight set as Double.
+ */
 fun rowweight(rowweight: Double): GridBagConstraints {
     val GBC = GridBagConstraints()
 
