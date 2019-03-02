@@ -38,8 +38,11 @@ class ConstrainedCheckbox(text: String): JCheckBox(text), Constrainable {
  * @param checkbox the checkbox to return.
  *
  * @return the checkbox it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(checkbox: ConstrainedCheckbox): ConstrainedCheckbox {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return checkbox
 }
 

@@ -109,8 +109,11 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
  * @param slider the slider to return.
  *
  * @return the slider it was gives.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return slider
 }
 

@@ -122,8 +122,11 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
  * @param list the list to return.
  *
  * @return the list it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(list: ConstrainedList): ConstrainedList {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return list
 }
 

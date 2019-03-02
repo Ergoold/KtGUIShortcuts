@@ -56,8 +56,11 @@ class ConstrainedCombobox(text: Array<String>): JComboBox<String>(text), Constra
  * @param combobox the combobox to return.
  *
  * @return the combobox it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(combobox: ConstrainedCombobox): ConstrainedCombobox {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return combobox
 }
 

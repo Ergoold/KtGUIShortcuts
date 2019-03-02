@@ -47,8 +47,11 @@ class ConstrainedRadioButton(text: String): JRadioButton(text), Constrainable {
  * @param radiobutton the radio button to return.
  *
  * @return the radio button it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(radiobutton: ConstrainedRadioButton): ConstrainedRadioButton {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return radiobutton
 }
 

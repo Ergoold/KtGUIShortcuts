@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.create
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -29,8 +29,11 @@ class ConstrainedLabel(text: String): JLabel(text), Constrainable {
  * @param label the label to return.
  *
  * @return the label it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(label: ConstrainedLabel): ConstrainedLabel {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return label
 }
 

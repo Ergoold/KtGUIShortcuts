@@ -104,8 +104,11 @@ fun width(cols: Int): Int {
  * @param textfield the text field to return.
  *
  * @return the text field it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(textfield: ConstrainedTextField): ConstrainedTextField {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return textfield
 }
 

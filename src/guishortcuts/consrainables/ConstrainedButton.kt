@@ -38,8 +38,11 @@ class ConstrainedButton(text: String): JButton(text), Constrainable {
  * @param button the button to be returned.
  *
  * @return the button it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return button
 }
 

@@ -54,8 +54,11 @@ class ConstrainedSpinner(text: Array<String>): JSpinner(text.toSpinnerModel()), 
  * @param spinner the list to return.
  *
  * @return the spinner it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(spinner: ConstrainedSpinner): ConstrainedSpinner {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return spinner
 }
 
