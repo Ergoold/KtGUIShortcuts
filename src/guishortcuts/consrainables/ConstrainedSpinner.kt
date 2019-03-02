@@ -67,3 +67,16 @@ infix fun Int.add(spinner: ConstrainedSpinner): ConstrainedSpinner {
 fun Array<String>.toSpinnerModel(): SpinnerListModel {
     return SpinnerListModel(this)
 }
+
+/**
+ * Create a spinner.
+ * Int must be equal to the variable create.
+ *
+ * @param text an array of the values in the spinner.
+ *
+ * @return a ConstrainedSpinner with the supplied text values.
+ */
+infix fun Int.spinner(text: Array<String>): ConstrainedSpinner {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedSpinner(text)
+}

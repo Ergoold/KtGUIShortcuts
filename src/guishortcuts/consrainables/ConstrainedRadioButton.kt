@@ -103,3 +103,16 @@ infix fun Int.deselected(radiobutton: ConstrainedRadioButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     radiobutton.isSelected = false
 }
+
+/**
+ * Create a radio button.
+ * Int must be equal to the variable create.
+ *
+ * @param text the text on the created radio button.
+ *
+ * @return a ConstrainedRadioButton with the supplied text.
+ */
+infix fun Int.radiobutton(text: String): ConstrainedRadioButton {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedRadioButton(text)
+}

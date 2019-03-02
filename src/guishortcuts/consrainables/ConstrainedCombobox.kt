@@ -86,3 +86,16 @@ infix fun Int.disabled(combobox: ConstrainedCombobox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     combobox.isEnabled = false
 }
+
+/**
+ * Create a combobox.
+ * Int must be equal to the variable create.
+ *
+ * @param text an array of the values in the combobox.
+ *
+ * @return a ConstrainedCombobox with the supplied text values.
+ */
+infix fun Int.combobox(text: Array<String>): ConstrainedCombobox {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedCombobox(text)
+}

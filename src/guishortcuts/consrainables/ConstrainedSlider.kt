@@ -160,3 +160,21 @@ fun spacing(major: Int, minor: Int): Pair<Int, Int> {
 fun labels(vararg labels: String): Array<String> {
     return arrayOf(*labels)
 }
+
+/**
+ * Create a spinner.
+ * Int must be equal to the variable create.
+ *
+ * @param min the minimum value of the spinner.
+ * @param max the maximum value of the spinner.
+ *
+ * @return a ConstrainedSlider with the supplied minimum and maximum.
+ */
+fun slider(min: Int, max: Int): ConstrainedSlider {
+    val slider = ConstrainedSlider(min, max)
+    slider.majorTickSpacing = max - min
+    slider.minorTickSpacing = (max - min) / 2
+    slider.paintTicks = true
+    slider.paintLabels = true
+    return slider
+}

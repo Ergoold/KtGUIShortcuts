@@ -134,3 +134,17 @@ infix fun Int.disabled(textfield: ConstrainedTextField) {
     if(this != make) throw IllegalKeywordException("Use 'make' to make components enabled or disabled")
     textfield.isEditable = false
 }
+
+/**
+ * Create a text field.
+ * Int must be equal to the variable create.
+ *
+ * @param content the initial content of the text field.
+ *
+ * @return a ConstrainedTextField with the supplied content.
+ */
+infix fun Int.textfield(content: String): ConstrainedTextField {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    val textfield = ConstrainedTextField(content)
+    return textfield
+}

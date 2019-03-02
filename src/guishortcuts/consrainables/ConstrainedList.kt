@@ -188,3 +188,16 @@ fun Array<String>.toListModel(): DefaultListModel<String> {
  * An alias for the items function.
  */
 fun items(vararg item: String) = options(*item)
+
+/**
+ * Create a list.
+ * Int must be equal to the variable create.
+ *
+ * @param text an array of the values in the list.
+ *
+ * @return a ConstrainedList with the supplied text values.
+ */
+infix fun Int.list(text: Array<String>): ConstrainedList {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedList(text)
+}

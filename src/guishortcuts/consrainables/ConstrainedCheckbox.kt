@@ -94,3 +94,16 @@ infix fun Int.deselected(checkbox: ConstrainedCheckbox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     checkbox.isSelected = false
 }
+
+/**
+ * Create a checkbox.
+ * Int must be equal to the variable create.
+ *
+ * @param text the text on the created checkbox.
+ *
+ * @return a ConstrainedCheckbox with the supplied text.
+ */
+infix fun Int.checkbox(text: String): ConstrainedCheckbox {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedCheckbox(text)
+}

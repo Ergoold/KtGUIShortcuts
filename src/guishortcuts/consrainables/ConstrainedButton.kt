@@ -67,3 +67,16 @@ infix fun Int.disabled(button: ConstrainedButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     button.isEnabled = false
 }
+
+/**
+ * Create a button.
+ * Int must be equal to the variable create.
+ *
+ * @param text the text on the created button.
+ *
+ * @return a ConstrainedButton with the supplied text.
+ */
+infix fun Int.button(text: String): ConstrainedButton {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedButton(text)
+}

@@ -1,5 +1,6 @@
 package guishortcuts.consrainables
 
+import guishortcuts.create
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -31,4 +32,17 @@ class ConstrainedLabel(text: String): JLabel(text), Constrainable {
  */
 infix fun Int.add(label: ConstrainedLabel): ConstrainedLabel {
     return label
+}
+
+/**
+ * Create a label.
+ * Int must be equal to the variable create.
+ *
+ * @param text the text on the created label.
+ *
+ * @return a ConstrainedLabel with the supplied text.
+ */
+infix fun Int.label(text: String): ConstrainedLabel {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedLabel(text)
 }
