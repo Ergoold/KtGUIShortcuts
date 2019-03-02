@@ -10,9 +10,11 @@ import javax.swing.*
  * @param title the new frame's title.
  *
  * @return a frame with the supplied title.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.frame(title: String): JFrame {
-    if(this != create) throw Exception("Use 'create' when attempting to create a frame")
+    if(this != create) throw IllegalKeywordException("Use 'create' when attempting to create a frame")
     return JFrame(title)
 }
 
@@ -21,9 +23,11 @@ infix fun Int.frame(title: String): JFrame {
  * Int must be equal to the variable window.
  *
  * @param frame the frame to initialize values.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.init(frame: JFrame) {
-    if(this != window) throw Exception("Use 'window' when attempting to initialize a frame")
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to initialize a frame")
     frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
     frame.layout = GridBagLayout()
     frame.pack()
@@ -35,9 +39,11 @@ infix fun Int.init(frame: JFrame) {
  * Int must be equal to the variable window.
  *
  * @param frame the frame to pack.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.pack(frame: JFrame) {
-    if(this != window) throw Exception("Use 'window' when attempting to pack a frame")
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to pack a frame")
     frame.pack()
 }
 
@@ -67,18 +73,22 @@ fun size(x: Int, y: Int): Dimension {
  * Int must be equal to the variable make.
  *
  * @param frame the frame to make visible.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.visible(frame: JFrame) {
-    if(this != make) throw Exception("Use 'make' when attempting to set frame visibility")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set frame visibility")
     frame.isVisible = true
 }
 
 /**
  * Make a frame invisible.
  * Int must be equal to the variable make.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.invisible(frame: JFrame) {
-    if(this != make) throw Exception("Use 'make' when attempting to set frame visibility")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set frame visibility")
     frame.dispose()
 }
 
@@ -87,9 +97,11 @@ infix fun Int.invisible(frame: JFrame) {
  * Int must be equal to the variable full.
  *
  * @param frame to maximize to full screen.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.screen(frame: JFrame) {
-    if(this != full) throw Exception("Unknown command: did you mean full screen <frame>")
+    if(this != full) throw IllegalKeywordException("Unknown command: did you mean full screen <frame>")
     frame.extendedState = JFrame.MAXIMIZED_BOTH
 }
 
@@ -110,13 +122,15 @@ fun options(vararg options: String): Array<String> {
  * input: show a textual input dialog with a textbox and an OK button.
  *
  * @param text the text to be shown within the dialog.
+ *
+ * @throws IllegalArgumentException
  */
 infix fun Int.dialog(text: String) {
     when(this) {
         message -> JOptionPane.showMessageDialog(null, text)
         confirm -> JOptionPane.showConfirmDialog(null, text)
         input -> JOptionPane.showInputDialog(null, text)
-        else -> throw Exception("You must specify a dialog type")
+        else -> throw IllegalArgumentException("You must specify a dialog type")
     }
 }
 
