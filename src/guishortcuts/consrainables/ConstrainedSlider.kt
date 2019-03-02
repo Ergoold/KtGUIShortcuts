@@ -123,8 +123,11 @@ infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
  * @param slider the slider to make horizontal.
  *
  * @return the slider it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.horizontal(slider: ConstrainedSlider): ConstrainedSlider {
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to change slider orientation")
     slider.orientation = JSlider.HORIZONTAL
     return slider
 }
@@ -135,8 +138,11 @@ infix fun Int.horizontal(slider: ConstrainedSlider): ConstrainedSlider {
  * @param slider the slider to make vertical.
  *
  * @return the slider it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.vertical(slider: ConstrainedSlider): ConstrainedSlider {
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to change slider orientation")
     slider.orientation = JSlider.VERTICAL
     return slider
 }
