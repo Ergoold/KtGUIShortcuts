@@ -1,5 +1,6 @@
 package guishortcuts.consrainables
 
+import guishortcuts.IllegalKeywordException
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -40,7 +41,7 @@ class ConstrainedSpinner(text: Array<String>): JSpinner(text.toSpinnerModel()), 
      * @return The current selected item.
      */
     infix fun selected(kind: Int): String {
-        if(kind != item) throw Exception("Use 'item' when attempting to get selected spinner item")
+        if(kind != item) throw IllegalKeywordException("Use 'item' when attempting to get selected spinner item")
         return (model as SpinnerListModel).value.toString()
     }
 }

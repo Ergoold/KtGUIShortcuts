@@ -2,6 +2,7 @@ package guishortcuts.consrainables
 
 import guishortcuts.*
 import java.awt.GridBagConstraints
+import java.lang.IllegalArgumentException
 import javax.swing.*
 
 /**
@@ -54,7 +55,7 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
      * @return the current selected item.
      */
     infix fun selected(kind: Int): String {
-        if(kind != item) throw Exception("Use 'item' when attempting to get selected list item")
+        if(kind != item) throw IllegalKeywordException("Use 'item' when attempting to get selected list item")
         return selectedValue
     }
     
@@ -66,7 +67,7 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
      * @return the current selected item's index.
      */
     infix fun selected(kind: Double): Int {
-        if(kind != index) throw Exception("Use 'index' when attempting to get selected list item's index")
+        if(kind != index) throw IllegalKeywordException("Use 'index' when attempting to get selected list item's index")
         return selectedIndex
     }
     
@@ -135,7 +136,7 @@ infix fun Int.add(list: ConstrainedList): ConstrainedList {
  * @param list the list to enable.
  */
 infix fun Int.enabled(list: ConstrainedList) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     list.isEnabled = true
 }
 
@@ -146,7 +147,7 @@ infix fun Int.enabled(list: ConstrainedList) {
  * @param list the list to disable.
  */
 infix fun Int.disabled(list: ConstrainedList) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     list.isEnabled = false
 }
 
@@ -164,7 +165,7 @@ infix fun Int.selection(list: ConstrainedList) {
         single -> list.selectionMode = ListSelectionModel.SINGLE_SELECTION
         interval -> list.selectionMode = ListSelectionModel.SINGLE_INTERVAL_SELECTION
         free -> list.selectionMode = ListSelectionModel.MULTIPLE_INTERVAL_SELECTION
-        else -> throw Exception("Specify a selection mode when attempting to set it.")
+        else -> throw IllegalArgumentException("Specify a selection mode when attempting to set it.")
     }
 }
 

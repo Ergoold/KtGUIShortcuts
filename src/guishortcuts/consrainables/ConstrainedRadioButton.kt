@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -59,7 +59,7 @@ infix fun Int.add(radiobutton: ConstrainedRadioButton): ConstrainedRadioButton {
  * @param radiobutton the radio button to enable.
  */
 infix fun Int.enabled(radiobutton: ConstrainedRadioButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     radiobutton.isEnabled = true
 }
 
@@ -70,7 +70,7 @@ infix fun Int.enabled(radiobutton: ConstrainedRadioButton) {
  * @param radiobutton the radio button to disable.
  */
 infix fun Int.disabled(radiobutton: ConstrainedRadioButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     radiobutton.isEnabled = false
 }
 
@@ -81,7 +81,7 @@ infix fun Int.disabled(radiobutton: ConstrainedRadioButton) {
  * @param radiobutton the radio button to make selected.
  */
 infix fun Int.selected(radiobutton: ConstrainedRadioButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isSelected")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     radiobutton.isSelected = true
 }
 
@@ -92,6 +92,6 @@ infix fun Int.selected(radiobutton: ConstrainedRadioButton) {
  * @param radiobutton the radio button to make deselected.
  */
 infix fun Int.deselected(radiobutton: ConstrainedRadioButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isSelected")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     radiobutton.isSelected = false
 }

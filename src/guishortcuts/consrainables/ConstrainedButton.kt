@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -50,7 +50,7 @@ infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
  * @param button the button to enable.
  */
 infix fun Int.enabled(button: ConstrainedButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     button.isEnabled = true
 }
 
@@ -60,6 +60,6 @@ infix fun Int.enabled(button: ConstrainedButton) {
  * @param button the button to disable.
  */
 infix fun Int.disabled(button: ConstrainedButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     button.isEnabled = false
 }

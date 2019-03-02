@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 import kotlin.Exception
@@ -49,7 +49,7 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
      * @return the content of this text field.
      */
     fun get(kw: Int): String {
-        if(kw != content) throw Exception("Use 'text' when getting the text from a text field")
+        if(kw != content) throw IllegalKeywordException("Use 'text' when getting the text from a text field")
         return text
     }
     
@@ -67,7 +67,7 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
             start -> JTextField.LEADING
             center -> JTextField.CENTER
             end -> JTextField.TRAILING
-            else -> throw Exception("Use one of 'start', 'center' and 'end' to set text field alignment")
+            else -> throw IllegalKeywordException("Use one of 'start', 'center' and 'end' to set text field alignment")
         }
     }
 }
@@ -117,7 +117,7 @@ infix fun Int.add(textfield: ConstrainedTextField): ConstrainedTextField {
  * @param textfield the text field to enable.
  */
 infix fun Int.enabled(textfield: ConstrainedTextField) {
-    if(this != make) throw Exception("Use 'make' to make components enabled or disabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' to make components enabled or disabled")
     textfield.isEditable = true
 }
 
@@ -128,6 +128,6 @@ infix fun Int.enabled(textfield: ConstrainedTextField) {
  * @param textfield the text field to disable.
  */
 infix fun Int.disabled(textfield: ConstrainedTextField) {
-    if(this != make) throw Exception("Use 'make' to make components enabled or disabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' to make components enabled or disabled")
     textfield.isEditable = false
 }

@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -68,7 +68,7 @@ infix fun Int.add(combobox: ConstrainedCombobox): ConstrainedCombobox {
  * @param combobox the combobox to disable.
  */
 infix fun Int.enabled(combobox: ConstrainedCombobox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     combobox.isEnabled = true
 }
 
@@ -79,6 +79,6 @@ infix fun Int.enabled(combobox: ConstrainedCombobox) {
  * @param combobox the combobox to disable.
  */
 infix fun Int.disabled(combobox: ConstrainedCombobox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     combobox.isEnabled = false
 }

@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -50,7 +50,7 @@ infix fun Int.add(checkbox: ConstrainedCheckbox): ConstrainedCheckbox {
  * @param checkbox the checkbox to enable.
  */
 infix fun Int.enabled(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     checkbox.isEnabled = true
 }
 
@@ -61,7 +61,7 @@ infix fun Int.enabled(checkbox: ConstrainedCheckbox) {
  * @param checkbox the checkbox to disable.
  */
 infix fun Int.disabled(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     checkbox.isEnabled = false
 }
 
@@ -72,7 +72,7 @@ infix fun Int.disabled(checkbox: ConstrainedCheckbox) {
  * @param checkbox the checkbox to make selected.
  */
 infix fun Int.selected(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isSelected")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     checkbox.isSelected = true
 }
 
@@ -83,6 +83,6 @@ infix fun Int.selected(checkbox: ConstrainedCheckbox) {
  * @param checkbox the checkbox to make deselected.
  */
 infix fun Int.deselected(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isSelected")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     checkbox.isSelected = false
 }

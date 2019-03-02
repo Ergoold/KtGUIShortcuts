@@ -1,5 +1,6 @@
 package guishortcuts.consrainables
 
+import guishortcuts.IllegalKeywordException
 import java.awt.GridBagConstraints
 import java.lang.Exception
 import java.util.*
@@ -82,7 +83,7 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
      * @return the slider's current selected value.
      */
     infix fun get(kw: Int): Int {
-        if(kw != selected) throw Exception("Use 'selected' to get the selected value from a slider")
+        if(kw != selected) throw IllegalKeywordException("Use 'selected' to get the selected value from a slider")
         return value
     }
     
