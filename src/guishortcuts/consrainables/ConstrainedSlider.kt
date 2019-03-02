@@ -1,12 +1,9 @@
 package guishortcuts.consrainables
 
-import guishortcuts.IllegalKeywordException
+import guishortcuts.*
 import java.awt.GridBagConstraints
-import java.lang.Exception
 import java.util.*
 import javax.swing.*
-import javax.swing.event.ChangeEvent
-import kotlin.collections.HashMap
 
 /**
  * A slider with GridBagConstraints.
@@ -106,9 +103,6 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
     }
 }
 
-val disable = 0
-val enable = 1
-val selected = 2
 /**
  * This function is purely for cosmetic purposes.
  *

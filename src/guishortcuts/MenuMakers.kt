@@ -2,13 +2,6 @@ package guishortcuts
 
 import javax.swing.*
 
-val bar = 0
-val separator = 1
-val menu = 2
-val check = 3
-val radio = 0.0
-val group = 1.0
-
 /**
  * Create a menu bar.
  * Int must be equal to the variable create.

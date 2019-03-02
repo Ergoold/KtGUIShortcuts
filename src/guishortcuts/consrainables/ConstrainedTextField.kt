@@ -76,11 +76,6 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
     }
 }
 
-const val content = 0
-const val start = 1
-const val center = 2
-const val end = 3
-
 /**
  * This function is purely for cosmetic purposes.
  *

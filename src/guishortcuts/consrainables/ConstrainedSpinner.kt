@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.IllegalKeywordException
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 

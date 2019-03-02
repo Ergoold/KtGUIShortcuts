@@ -116,12 +116,6 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
     }
 }
 
-val single = 0
-val interval = 1
-val free = 2
-val item = 3
-val index = 0.0
-
 /**
  * This function is purely for cosmetic purposes.
  *

@@ -4,14 +4,6 @@ import guishortcuts.consrainables.*
 import java.awt.*
 import javax.swing.*
 
-val create = 0
-val make = 1
-val window = 2
-val full = 3
-val message = 4
-val confirm = 5
-val input = 6
-
 /**
  * Create a new frame.
  * Int must be equal to the variable create.
