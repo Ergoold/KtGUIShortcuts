@@ -44,6 +44,8 @@ infix fun Int.add(label: ConstrainedLabel): ConstrainedLabel {
  * @param text the text on the created label.
  *
  * @return a ConstrainedLabel with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.label(text: String): ConstrainedLabel {
     if(this != create) throw Exception("Use 'create' when creating components")

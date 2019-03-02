@@ -165,13 +165,15 @@ fun labels(vararg labels: String): Array<String> {
 }
 
 /**
- * Create a spinner.
+ * Create a slider.
  * Int must be equal to the variable create.
  *
  * @param min the minimum value of the spinner.
  * @param max the maximum value of the spinner.
  *
  * @return a ConstrainedSlider with the supplied minimum and maximum.
+ *
+ * @throws IllegalKeywordException
  */
 fun slider(min: Int, max: Int): ConstrainedSlider {
     val slider = ConstrainedSlider(min, max)

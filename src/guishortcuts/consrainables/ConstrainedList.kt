@@ -199,6 +199,8 @@ fun items(vararg item: String) = options(*item)
  * @param text an array of the values in the list.
  *
  * @return a ConstrainedList with the supplied text values.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.list(text: Array<String>): ConstrainedList {
     if(this != create) throw Exception("Use 'create' when creating components")

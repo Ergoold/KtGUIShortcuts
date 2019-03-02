@@ -114,6 +114,8 @@ infix fun Int.deselected(radiobutton: ConstrainedRadioButton) {
  * @param text the text on the created radio button.
  *
  * @return a ConstrainedRadioButton with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.radiobutton(text: String): ConstrainedRadioButton {
     if(this != create) throw Exception("Use 'create' when creating components")

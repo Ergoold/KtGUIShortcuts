@@ -78,6 +78,8 @@ infix fun Int.disabled(button: ConstrainedButton) {
  * @param text the text on the created button.
  *
  * @return a ConstrainedButton with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.button(text: String): ConstrainedButton {
     if(this != create) throw Exception("Use 'create' when creating components")

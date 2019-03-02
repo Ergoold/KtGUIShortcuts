@@ -97,6 +97,8 @@ infix fun Int.disabled(combobox: ConstrainedCombobox) {
  * @param text an array of the values in the combobox.
  *
  * @return a ConstrainedCombobox with the supplied text values.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.combobox(text: Array<String>): ConstrainedCombobox {
     if(this != create) throw Exception("Use 'create' when creating components")

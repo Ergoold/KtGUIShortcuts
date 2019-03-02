@@ -105,6 +105,8 @@ infix fun Int.deselected(checkbox: ConstrainedCheckbox) {
  * @param text the text on the created checkbox.
  *
  * @return a ConstrainedCheckbox with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.checkbox(text: String): ConstrainedCheckbox {
     if(this != create) throw Exception("Use 'create' when creating components")

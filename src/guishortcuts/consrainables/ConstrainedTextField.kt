@@ -145,6 +145,8 @@ infix fun Int.disabled(textfield: ConstrainedTextField) {
  * @param content the initial content of the text field.
  *
  * @return a ConstrainedTextField with the supplied content.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.textfield(content: String): ConstrainedTextField {
     if(this != create) throw Exception("Use 'create' when creating components")

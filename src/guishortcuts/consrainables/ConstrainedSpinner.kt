@@ -78,6 +78,8 @@ fun Array<String>.toSpinnerModel(): SpinnerListModel {
  * @param text an array of the values in the spinner.
  *
  * @return a ConstrainedSpinner with the supplied text values.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.spinner(text: Array<String>): ConstrainedSpinner {
     if(this != create) throw Exception("Use 'create' when creating components")
