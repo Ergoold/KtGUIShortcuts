@@ -37,16 +37,24 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
      * The parameter should be equal to the variable enable to enable labels and anything else to disable labels.
      *
      * @param action whether or not to enable the labels.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun label(action: Int) {
+        if(action != enable && action != disable) throw IllegalKeywordException("Use 'enable' or 'disable' to enable or disable slider labels.")
         paintLabels = action == enable
     }
     
     /**
      * Enable or disable this slider's tick marks.
      * The parameter should be equal to the variable enable to enable tick marks and anything else to disable tick marks.
+     *
+     * @param action whether or not to enable the tick marks.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun ticks(action: Int) {
+        if(action != enable && action != disable) throw IllegalKeywordException("Use 'enable' or 'disable' to enable or disable slider tick marks.")
         paintTicks = action == enable
     }
     
