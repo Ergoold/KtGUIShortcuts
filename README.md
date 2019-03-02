@@ -89,5 +89,7 @@ KtGUIShortcuts automatically creates your `frame` with a `GridBagLayout`. This l
 ```kotlin
 coordinates(col, row) // Set the coordinates of the component on the grid, starting with (0, 0) in the top left corner.
 cells(cols, rows)     // Set the width and height of the component in grid-cells.
-weights(cols, rows)   // Set the weights of the component. You can read more about weights in [The Java™ Tutorials](https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html).
+weights(cols, rows)   // Set the weights of the component.
 ```
+
+You can read more about weights in [The Java™ Tutorials](https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html).
