@@ -84,37 +84,10 @@ KtGUIShortcuts automatically creates your `frame` with a `GridBagLayout`. This l
 <component> constrain <constraint>
 ```
 
-`constraint`s can be one of several things:
-```kotlin
-constraints(<col>, <row>, <width>, <height>, <colweight>, <rowweight>)
-```
-```kotlin
-constraints(<col>, <row>, <width>, <height>)
-```
-```kotlin
-coordinates(<col>, <row>)
-coords(<col>, <row>)
-```
-```kotlin
-cells(<width>, <height>)
-```
-```kotlin
-weights(<colweight>, <rowweight>)
-```
-`<width>` and `<height>` are always in grid cells.
+`constraint`s can be one of several things, but the options I recommend are: 
 
-You can also set each constraint individually:
 ```kotlin
-col(<col>)
+coordinates(col, row) // Set the coordinates of the component on the grid, starting with (0, 0) in the top left corner.
+cells(cols, rows)     // Set the width and height of the component in grid-cells.
+weights(cols, rows)   // Set the weights of the component. You can read more about weights in [The Java™ Tutorials](https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html).
 ```
-```kotlin
-row(<row>)
-```
-```kotlin
-colweight(<colweight>)
-```
-```kotlin
-rowweight(<rowweight>)
-```
-
-I recommend you use `coordinates`, `cells` and `weights` individually to set constraints for your components.
