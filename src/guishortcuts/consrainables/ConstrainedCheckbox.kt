@@ -48,6 +48,8 @@ infix fun Int.add(checkbox: ConstrainedCheckbox): ConstrainedCheckbox {
  * Int must equal to the variable make.
  *
  * @param checkbox the checkbox to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(checkbox: ConstrainedCheckbox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -59,6 +61,8 @@ infix fun Int.enabled(checkbox: ConstrainedCheckbox) {
  * Int must be equal to the variable make.
  *
  * @param checkbox the checkbox to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(checkbox: ConstrainedCheckbox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -70,6 +74,8 @@ infix fun Int.disabled(checkbox: ConstrainedCheckbox) {
  * Int must be equal to the variable make.
  *
  * @param checkbox the checkbox to make selected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.selected(checkbox: ConstrainedCheckbox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
@@ -81,6 +87,8 @@ infix fun Int.selected(checkbox: ConstrainedCheckbox) {
  * Int must be equal to the variable make.
  *
  * @param checkbox the checkbox to make deselected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.deselected(checkbox: ConstrainedCheckbox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")

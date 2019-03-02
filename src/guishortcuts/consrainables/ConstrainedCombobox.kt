@@ -66,6 +66,8 @@ infix fun Int.add(combobox: ConstrainedCombobox): ConstrainedCombobox {
  * Int must be equal to the variable make.
  *
  * @param combobox the combobox to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(combobox: ConstrainedCombobox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -77,6 +79,8 @@ infix fun Int.enabled(combobox: ConstrainedCombobox) {
  * Int must be equal to the variable make.
  *
  * @param combobox the combobox to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(combobox: ConstrainedCombobox) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")

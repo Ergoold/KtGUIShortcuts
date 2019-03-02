@@ -39,6 +39,8 @@ class ConstrainedSpinner(text: Array<String>): JSpinner(text.toSpinnerModel()), 
      * @param kind must be equal to the variable item.
      *
      * @return The current selected item.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun selected(kind: Int): String {
         if(kind != item) throw IllegalKeywordException("Use 'item' when attempting to get selected spinner item")

@@ -57,6 +57,8 @@ infix fun Int.add(radiobutton: ConstrainedRadioButton): ConstrainedRadioButton {
  * Int must be equal to the variable make.
  *
  * @param radiobutton the radio button to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(radiobutton: ConstrainedRadioButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -68,6 +70,8 @@ infix fun Int.enabled(radiobutton: ConstrainedRadioButton) {
  * Int must be equal to the variable make.
  *
  * @param radiobutton the radio button to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(radiobutton: ConstrainedRadioButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -79,6 +83,8 @@ infix fun Int.disabled(radiobutton: ConstrainedRadioButton) {
  * Int must be equal to the variable make.
  *
  * @param radiobutton the radio button to make selected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.selected(radiobutton: ConstrainedRadioButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
@@ -90,6 +96,8 @@ infix fun Int.selected(radiobutton: ConstrainedRadioButton) {
  * Int must be equal to the variable make.
  *
  * @param radiobutton the radio button to make deselected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.deselected(radiobutton: ConstrainedRadioButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")

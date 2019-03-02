@@ -81,6 +81,8 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
      * @param kw must be equal to the variable selected.
      *
      * @return the slider's current selected value.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun get(kw: Int): Int {
         if(kw != selected) throw IllegalKeywordException("Use 'selected' to get the selected value from a slider")

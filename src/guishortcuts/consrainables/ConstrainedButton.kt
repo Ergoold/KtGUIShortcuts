@@ -48,6 +48,8 @@ infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
  * Int must equal to the variable make.
  *
  * @param button the button to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(button: ConstrainedButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -58,6 +60,8 @@ infix fun Int.enabled(button: ConstrainedButton) {
  * Disable the button. Int must equal to the variable make.
  *
  * @param button the button to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(button: ConstrainedButton) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")

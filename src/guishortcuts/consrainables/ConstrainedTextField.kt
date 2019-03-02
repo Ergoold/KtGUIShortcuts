@@ -47,6 +47,8 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
      * @param kw must be equal to the variable content.
      *
      * @return the content of this text field.
+     *
+     * @throws IllegalKeywordException
      */
     fun get(kw: Int): String {
         if(kw != content) throw IllegalKeywordException("Use 'text' when getting the text from a text field")
@@ -61,13 +63,15 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
      * end: The end of the text field.
      *
      * @param dir the alignment of the content (start, end or center).
+     *
+     * @throws IllegalArgumentException
      */
     infix fun align(dir: Int) {
         horizontalAlignment = when(dir) {
             start -> JTextField.LEADING
             center -> JTextField.CENTER
             end -> JTextField.TRAILING
-            else -> throw IllegalKeywordException("Use one of 'start', 'center' and 'end' to set text field alignment")
+            else -> throw IllegalArgumentException("Use one of 'start', 'center' and 'end' to set text field alignment")
         }
     }
 }
@@ -115,6 +119,8 @@ infix fun Int.add(textfield: ConstrainedTextField): ConstrainedTextField {
  * Int must be equal to the variable make.
  *
  * @param textfield the text field to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(textfield: ConstrainedTextField) {
     if(this != make) throw IllegalKeywordException("Use 'make' to make components enabled or disabled")
@@ -126,6 +132,8 @@ infix fun Int.enabled(textfield: ConstrainedTextField) {
  * Int must be equal to the variable make.
  *
  * @param textfield the text field to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(textfield: ConstrainedTextField) {
     if(this != make) throw IllegalKeywordException("Use 'make' to make components enabled or disabled")

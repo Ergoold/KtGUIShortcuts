@@ -53,6 +53,8 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
      * @param kind must be equal to the variable item.
      *
      * @return the current selected item.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun selected(kind: Int): String {
         if(kind != item) throw IllegalKeywordException("Use 'item' when attempting to get selected list item")
@@ -65,6 +67,8 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
      * @param kind must be equal to the variable index.
      *
      * @return the current selected item's index.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun selected(kind: Double): Int {
         if(kind != index) throw IllegalKeywordException("Use 'index' when attempting to get selected list item's index")
@@ -134,6 +138,8 @@ infix fun Int.add(list: ConstrainedList): ConstrainedList {
  * Int must be equal to the variable make.
  *
  * @param list the list to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(list: ConstrainedList) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -145,6 +151,8 @@ infix fun Int.enabled(list: ConstrainedList) {
  * Int must be equal to the variable make.
  *
  * @param list the list to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(list: ConstrainedList) {
     if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
@@ -159,6 +167,8 @@ infix fun Int.disabled(list: ConstrainedList) {
  * - free: the user may multiple items with no restrictions.
  *
  * @param list the list to change the selection mode of.
+ *
+ * @throws IllegalArgumentException
  */
 infix fun Int.selection(list: ConstrainedList) {
     when (this) {
