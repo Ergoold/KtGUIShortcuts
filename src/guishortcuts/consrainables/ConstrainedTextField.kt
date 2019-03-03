@@ -51,7 +51,7 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
      * @throws IllegalKeywordException
      */
     fun get(kw: Int): String {
-        if(kw != content) throw IllegalKeywordException("Use 'text' when getting the text from a text field")
+        if(kw != content) throw IllegalKeywordException("Use 'content' when getting the content from a text field")
         return text
     }
     
@@ -73,6 +73,15 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
             end -> JTextField.TRAILING
             else -> throw IllegalArgumentException("Use one of 'start', 'center' and 'end' to set text field alignment")
         }
+    }
+    
+    /**
+     * Add an action listener to this text field.
+     *
+     * @param func the function to execute when this text field's content is changed.
+     */
+    infix fun does(func: () -> Unit) {
+        addActionListener {func()}
     }
 }
 
