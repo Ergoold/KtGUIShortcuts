@@ -9,10 +9,12 @@ import javax.swing.*
  * @param kw must be equal to the variable bar.
  *
  * @return a JMenuBar.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.menu(kw: Int): JMenuBar {
-    if(this != create) throw Exception("Use 'create menu bar' to create a menu bar")
-    if(kw != bar) throw Exception("Use 'create menu bar' to create a menu bar")
+    if(this != create) throw IllegalKeywordException("Use 'create menu bar' to create a menu bar")
+    if(kw != bar) throw IllegalKeywordException("Use 'create menu bar' to create a menu bar")
     return JMenuBar()
 }
 
@@ -23,9 +25,11 @@ infix fun Int.menu(kw: Int): JMenuBar {
  * @param text the text on this menu.
  *
  * @return a menu with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.menu(text: String): JMenu {
-    if(this != create) throw Exception("Use 'create' to create a menu")
+    if(this != create) throw IllegalKeywordException("Use 'create' to create a menu")
     return JMenu(text)
 }
 
@@ -36,9 +40,11 @@ infix fun Int.menu(text: String): JMenu {
  * @param text the text on this menu item.
  *
  * @return a menu item with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.menuitem(text: String): JMenuItem {
-    if(this != create) throw Exception("Use 'create' to create a menu item")
+    if(this != create) throw IllegalKeywordException("Use 'create' to create a menu item")
     return JMenuItem(text)
 }
 
@@ -71,9 +77,11 @@ infix fun Int.radiobutton(other: Int): Double {
  * @param text the text on the checkbox menu item.
  *
  * @return a checkbox menu item with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.item(text: String): JCheckBoxMenuItem {
-    if(this != check) throw Exception("Use 'check' to create checkbox menu items")
+    if(this != check) throw IllegalKeywordException("Use 'check' to create checkbox menu items")
     return JCheckBoxMenuItem(text)
 }
 
@@ -84,9 +92,11 @@ infix fun Int.item(text: String): JCheckBoxMenuItem {
  * @param text the text on the radio button menu item.
  *
  * @return a radio button menu item with the supplied text.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Double.item(text: String): JRadioButtonMenuItem {
-    if(this != radio) throw Exception("Use 'radio' to create radio button menu items")
+    if(this != radio) throw IllegalKeywordException("Use 'radio' to create radio button menu items")
     return JRadioButtonMenuItem(text)
 }
 
@@ -97,10 +107,12 @@ infix fun Double.item(text: String): JRadioButtonMenuItem {
  * @param value must be equal to the variable group.
  *
  * @return a radio button group.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Double.item(value: Double): ButtonGroup {
-    if(this != radio) throw Exception("Use 'radio' to create radio button groups")
-    if(value != group) throw Exception("Use 'group' to create radio button groups")
+    if(this != radio) throw IllegalKeywordException("Use 'radio' to create radio button groups")
+    if(value != group) throw IllegalKeywordException("Use 'group' to create radio button groups")
     return ButtonGroup()
 }
 
@@ -110,11 +122,13 @@ infix fun Double.item(value: Double): ButtonGroup {
  *
  * @param other must be equal to the variable group.
  *
- * @return a radio button group..
+ * @return a radio button group.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.radiobutton(other: Double): ButtonGroup {
-    if(this != create) throw Exception("Use 'create' to create radio button groups")
-    if(other != group) throw Exception("Use 'group' to create radio button groups")
+    if(this != create) throw IllegalKeywordException("Use 'create' to create radio button groups")
+    if(other != group) throw IllegalKeywordException("Use 'group' to create radio button groups")
     return ButtonGroup()
 }
 
@@ -156,9 +170,11 @@ infix fun Int.radio(other: Int): Int {
  * @param menuitem the menu item to return.
  *
  * @return the menu item it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(menuitem: JMenuItem): JMenuItem {
-    if(this != window) throw Exception("Use 'window' when adding a menu item to a menu")
+    if(this != window) throw IllegalKeywordException("Use 'window' when adding a menu item to a menu")
     return menuitem
 }
 
@@ -169,9 +185,11 @@ infix fun Int.add(menuitem: JMenuItem): JMenuItem {
  * @param menuitem the radio button menu item to return.
  *
  * @return the radio button menu item it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(menuitem: JRadioButtonMenuItem): JRadioButtonMenuItem {
-    if(this != window) throw Exception("Use 'window' when adding a radio button menu item to a menu")
+    if(this != window) throw IllegalKeywordException("Use 'window' when adding a radio button menu item to a menu")
     return menuitem
 }
 
@@ -191,9 +209,11 @@ infix fun JMenuItem.to(menu: JMenu) {
  * @param menu the menu to return.
  *
  * @return the menu it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(menu: JMenu): JMenu {
-    if(this != window) throw Exception("Use 'window' when adding a menu to a menu bar")
+    if(this != window) throw IllegalKeywordException("Use 'window' when adding a menu to a menu bar")
     return menu
 }
 
@@ -213,9 +233,11 @@ infix fun JMenu.to(menuBar: JMenuBar) {
  * @param menuBar the menu bar to return.
  *
  * @return the menu bar it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(menuBar: JMenuBar): JMenuBar {
-    if(this != window) throw Exception("Use 'window' when adding a menu bar to a frame")
+    if(this != window) throw IllegalKeywordException("Use 'window' when adding a menu bar to a frame")
     return menuBar
 }
 
@@ -235,10 +257,12 @@ infix fun JMenuBar.to(frame: JFrame) {
  * @param other must be equal to separator.
  *
  * @return the other it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(other: Int): Int {
-    if(this != window) throw Exception("Use 'window' when adding a separator to a menu")
-    if(other != separator) throw Exception("Use 'separator' when adding a separator to a menu")
+    if(this != window) throw IllegalKeywordException("Use 'window' when adding a separator to a menu")
+    if(other != separator) throw IllegalKeywordException("Use 'separator' when adding a separator to a menu")
     return other
 }
 
@@ -246,9 +270,11 @@ infix fun Int.add(other: Int): Int {
  * Add a separator to a menu.
  *
  * @param menu the menu a separator will be added to.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.to(menu: JMenu) {
-    if(this != separator) throw Exception("Use 'separator' when adding a separator to a menu")
+    if(this != separator) throw IllegalKeywordException("Use 'separator' when adding a separator to a menu")
     menu.addSeparator()
 }
 
@@ -347,9 +373,11 @@ infix fun JMenuItem.does(func: () -> Unit) {
  * Int must be equal to the variable make.
  *
  * @param menuitem the radio button menu item to make selected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.selected(menuitem: JMenuItem) {
-    if(this != make) throw Exception("Use 'make' to toggle whether a radio button menu item is selected")
+    if(this != make) throw IllegalKeywordException("Use 'make' to toggle whether a radio button menu item is selected")
     menuitem.isSelected = true
 }
 
@@ -358,8 +386,10 @@ infix fun Int.selected(menuitem: JMenuItem) {
  * Int must be equal to the variable make.
  *
  * @param menuitem the radio button menu item to make deselected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.deselected(menuitem: JMenuItem) {
-    if(this != make) throw Exception("Use 'make' to toggle whether a radio button menu item is selected")
+    if(this != make) throw IllegalKeywordException("Use 'make' to toggle whether a radio button menu item is selected")
     menuitem.isSelected = false
 }
