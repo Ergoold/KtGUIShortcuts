@@ -1,11 +1,9 @@
 package guishortcuts.consrainables
 
+import guishortcuts.*
 import java.awt.GridBagConstraints
-import java.lang.Exception
 import java.util.*
 import javax.swing.*
-import javax.swing.event.ChangeEvent
-import kotlin.collections.HashMap
 
 /**
  * A slider with GridBagConstraints.
@@ -39,16 +37,24 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
      * The parameter should be equal to the variable enable to enable labels and anything else to disable labels.
      *
      * @param action whether or not to enable the labels.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun label(action: Int) {
+        if(action != enable && action != disable) throw IllegalKeywordException("Use 'enable' or 'disable' to enable or disable slider labels.")
         paintLabels = action == enable
     }
     
     /**
      * Enable or disable this slider's tick marks.
      * The parameter should be equal to the variable enable to enable tick marks and anything else to disable tick marks.
+     *
+     * @param action whether or not to enable the tick marks.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun ticks(action: Int) {
+        if(action != enable && action != disable) throw IllegalKeywordException("Use 'enable' or 'disable' to enable or disable slider tick marks.")
         paintTicks = action == enable
     }
     
@@ -80,9 +86,11 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
      * @param kw must be equal to the variable selected.
      *
      * @return the slider's current selected value.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun get(kw: Int): Int {
-        if(kw != selected) throw Exception("Use 'selected' to get the selected value from a slider")
+        if(kw != selected) throw IllegalKeywordException("Use 'selected' to get the selected value from a slider")
         return value
     }
     
@@ -103,17 +111,17 @@ class ConstrainedSlider(min: Int, max: Int): JSlider(min, max), Constrainable {
     }
 }
 
-val disable = 0
-val enable = 1
-val selected = 2
 /**
  * This function is purely for cosmetic purposes.
  *
  * @param slider the slider to return.
  *
  * @return the slider it was gives.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return slider
 }
 
@@ -123,8 +131,11 @@ infix fun Int.add(slider: ConstrainedSlider): ConstrainedSlider {
  * @param slider the slider to make horizontal.
  *
  * @return the slider it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.horizontal(slider: ConstrainedSlider): ConstrainedSlider {
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to change slider orientation")
     slider.orientation = JSlider.HORIZONTAL
     return slider
 }
@@ -135,8 +146,11 @@ infix fun Int.horizontal(slider: ConstrainedSlider): ConstrainedSlider {
  * @param slider the slider to make vertical.
  *
  * @return the slider it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.vertical(slider: ConstrainedSlider): ConstrainedSlider {
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to change slider orientation")
     slider.orientation = JSlider.VERTICAL
     return slider
 }
@@ -162,4 +176,24 @@ fun spacing(major: Int, minor: Int): Pair<Int, Int> {
  */
 fun labels(vararg labels: String): Array<String> {
     return arrayOf(*labels)
+}
+
+/**
+ * Create a slider.
+ * Int must be equal to the variable create.
+ *
+ * @param min the minimum value of the spinner.
+ * @param max the maximum value of the spinner.
+ *
+ * @return a ConstrainedSlider with the supplied minimum and maximum.
+ *
+ * @throws IllegalKeywordException
+ */
+fun slider(min: Int, max: Int): ConstrainedSlider {
+    val slider = ConstrainedSlider(min, max)
+    slider.majorTickSpacing = max - min
+    slider.minorTickSpacing = (max - min) / 2
+    slider.paintTicks = true
+    slider.paintLabels = true
+    return slider
 }

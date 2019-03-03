@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -38,8 +38,11 @@ class ConstrainedButton(text: String): JButton(text), Constrainable {
  * @param button the button to be returned.
  *
  * @return the button it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return button
 }
 
@@ -48,9 +51,11 @@ infix fun Int.add(button: ConstrainedButton): ConstrainedButton {
  * Int must equal to the variable make.
  *
  * @param button the button to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(button: ConstrainedButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     button.isEnabled = true
 }
 
@@ -58,8 +63,25 @@ infix fun Int.enabled(button: ConstrainedButton) {
  * Disable the button. Int must equal to the variable make.
  *
  * @param button the button to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(button: ConstrainedButton) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     button.isEnabled = false
+}
+
+/**
+ * Create a button.
+ * Int must be equal to the variable create.
+ *
+ * @param text the text on the created button.
+ *
+ * @return a ConstrainedButton with the supplied text.
+ *
+ * @throws IllegalKeywordException
+ */
+infix fun Int.button(text: String): ConstrainedButton {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedButton(text)
 }

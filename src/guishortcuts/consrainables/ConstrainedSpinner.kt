@@ -1,5 +1,6 @@
 package guishortcuts.consrainables
 
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -38,9 +39,11 @@ class ConstrainedSpinner(text: Array<String>): JSpinner(text.toSpinnerModel()), 
      * @param kind must be equal to the variable item.
      *
      * @return The current selected item.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun selected(kind: Int): String {
-        if(kind != item) throw Exception("Use 'item' when attempting to get selected spinner item")
+        if(kind != item) throw IllegalKeywordException("Use 'item' when attempting to get selected spinner item")
         return (model as SpinnerListModel).value.toString()
     }
 }
@@ -51,8 +54,11 @@ class ConstrainedSpinner(text: Array<String>): JSpinner(text.toSpinnerModel()), 
  * @param spinner the list to return.
  *
  * @return the spinner it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(spinner: ConstrainedSpinner): ConstrainedSpinner {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return spinner
 }
 
@@ -63,4 +69,19 @@ infix fun Int.add(spinner: ConstrainedSpinner): ConstrainedSpinner {
  */
 fun Array<String>.toSpinnerModel(): SpinnerListModel {
     return SpinnerListModel(this)
+}
+
+/**
+ * Create a spinner.
+ * Int must be equal to the variable create.
+ *
+ * @param text an array of the values in the spinner.
+ *
+ * @return a ConstrainedSpinner with the supplied text values.
+ *
+ * @throws IllegalKeywordException
+ */
+infix fun Int.spinner(text: Array<String>): ConstrainedSpinner {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedSpinner(text)
 }

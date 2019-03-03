@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 import kotlin.Exception
@@ -47,9 +47,11 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
      * @param kw must be equal to the variable content.
      *
      * @return the content of this text field.
+     *
+     * @throws IllegalKeywordException
      */
     fun get(kw: Int): String {
-        if(kw != content) throw Exception("Use 'text' when getting the text from a text field")
+        if(kw != content) throw IllegalKeywordException("Use 'text' when getting the text from a text field")
         return text
     }
     
@@ -61,21 +63,18 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
      * end: The end of the text field.
      *
      * @param dir the alignment of the content (start, end or center).
+     *
+     * @throws IllegalArgumentException
      */
     infix fun align(dir: Int) {
         horizontalAlignment = when(dir) {
             start -> JTextField.LEADING
             center -> JTextField.CENTER
             end -> JTextField.TRAILING
-            else -> throw Exception("Use one of 'start', 'center' and 'end' to set text field alignment")
+            else -> throw IllegalArgumentException("Use one of 'start', 'center' and 'end' to set text field alignment")
         }
     }
 }
-
-const val content = 0
-const val start = 1
-const val center = 2
-const val end = 3
 
 /**
  * This function is purely for cosmetic purposes.
@@ -105,8 +104,11 @@ fun width(cols: Int): Int {
  * @param textfield the text field to return.
  *
  * @return the text field it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(textfield: ConstrainedTextField): ConstrainedTextField {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return textfield
 }
 
@@ -115,9 +117,11 @@ infix fun Int.add(textfield: ConstrainedTextField): ConstrainedTextField {
  * Int must be equal to the variable make.
  *
  * @param textfield the text field to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(textfield: ConstrainedTextField) {
-    if(this != make) throw Exception("Use 'make' to make components enabled or disabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' to make components enabled or disabled")
     textfield.isEditable = true
 }
 
@@ -126,8 +130,26 @@ infix fun Int.enabled(textfield: ConstrainedTextField) {
  * Int must be equal to the variable make.
  *
  * @param textfield the text field to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(textfield: ConstrainedTextField) {
-    if(this != make) throw Exception("Use 'make' to make components enabled or disabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' to make components enabled or disabled")
     textfield.isEditable = false
+}
+
+/**
+ * Create a text field.
+ * Int must be equal to the variable create.
+ *
+ * @param content the initial content of the text field.
+ *
+ * @return a ConstrainedTextField with the supplied content.
+ *
+ * @throws IllegalKeywordException
+ */
+infix fun Int.textfield(content: String): ConstrainedTextField {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    val textfield = ConstrainedTextField(content)
+    return textfield
 }

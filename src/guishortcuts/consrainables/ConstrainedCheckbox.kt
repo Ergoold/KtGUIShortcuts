@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -38,8 +38,11 @@ class ConstrainedCheckbox(text: String): JCheckBox(text), Constrainable {
  * @param checkbox the checkbox to return.
  *
  * @return the checkbox it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(checkbox: ConstrainedCheckbox): ConstrainedCheckbox {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return checkbox
 }
 
@@ -48,9 +51,11 @@ infix fun Int.add(checkbox: ConstrainedCheckbox): ConstrainedCheckbox {
  * Int must equal to the variable make.
  *
  * @param checkbox the checkbox to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     checkbox.isEnabled = true
 }
 
@@ -59,9 +64,11 @@ infix fun Int.enabled(checkbox: ConstrainedCheckbox) {
  * Int must be equal to the variable make.
  *
  * @param checkbox the checkbox to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     checkbox.isEnabled = false
 }
 
@@ -70,9 +77,11 @@ infix fun Int.disabled(checkbox: ConstrainedCheckbox) {
  * Int must be equal to the variable make.
  *
  * @param checkbox the checkbox to make selected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.selected(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isSelected")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     checkbox.isSelected = true
 }
 
@@ -81,8 +90,25 @@ infix fun Int.selected(checkbox: ConstrainedCheckbox) {
  * Int must be equal to the variable make.
  *
  * @param checkbox the checkbox to make deselected.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.deselected(checkbox: ConstrainedCheckbox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isSelected")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isSelected")
     checkbox.isSelected = false
+}
+
+/**
+ * Create a checkbox.
+ * Int must be equal to the variable create.
+ *
+ * @param text the text on the created checkbox.
+ *
+ * @return a ConstrainedCheckbox with the supplied text.
+ *
+ * @throws IllegalKeywordException
+ */
+infix fun Int.checkbox(text: String): ConstrainedCheckbox {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedCheckbox(text)
 }

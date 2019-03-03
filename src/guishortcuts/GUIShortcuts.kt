@@ -1,16 +1,7 @@
 package guishortcuts
 
-import guishortcuts.consrainables.*
 import java.awt.*
 import javax.swing.*
-
-val create = 0
-val make = 1
-val window = 2
-val full = 3
-val message = 4
-val confirm = 5
-val input = 6
 
 /**
  * Create a new frame.
@@ -19,9 +10,11 @@ val input = 6
  * @param title the new frame's title.
  *
  * @return a frame with the supplied title.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.frame(title: String): JFrame {
-    if(this != create) throw Exception("Use 'create' when attempting to create a frame")
+    if(this != create) throw IllegalKeywordException("Use 'create' when attempting to create a frame")
     return JFrame(title)
 }
 
@@ -30,9 +23,11 @@ infix fun Int.frame(title: String): JFrame {
  * Int must be equal to the variable window.
  *
  * @param frame the frame to initialize values.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.init(frame: JFrame) {
-    if(this != window) throw Exception("Use 'window' when attempting to initialize a frame")
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to initialize a frame")
     frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
     frame.layout = GridBagLayout()
     frame.pack()
@@ -44,9 +39,11 @@ infix fun Int.init(frame: JFrame) {
  * Int must be equal to the variable window.
  *
  * @param frame the frame to pack.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.pack(frame: JFrame) {
-    if(this != window) throw Exception("Use 'window' when attempting to pack a frame")
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to pack a frame")
     frame.pack()
 }
 
@@ -76,18 +73,22 @@ fun size(x: Int, y: Int): Dimension {
  * Int must be equal to the variable make.
  *
  * @param frame the frame to make visible.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.visible(frame: JFrame) {
-    if(this != make) throw Exception("Use 'make' when attempting to set frame visibility")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set frame visibility")
     frame.isVisible = true
 }
 
 /**
  * Make a frame invisible.
  * Int must be equal to the variable make.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.invisible(frame: JFrame) {
-    if(this != make) throw Exception("Use 'make' when attempting to set frame visibility")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set frame visibility")
     frame.dispose()
 }
 
@@ -96,133 +97,12 @@ infix fun Int.invisible(frame: JFrame) {
  * Int must be equal to the variable full.
  *
  * @param frame to maximize to full screen.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.screen(frame: JFrame) {
-    if(this != full) throw Exception("Unknown command: did you mean full screen <frame>")
+    if(this != full) throw IllegalKeywordException("Unknown command: did you mean full screen <frame>")
     frame.extendedState = JFrame.MAXIMIZED_BOTH
-}
-
-/**
- * Create a label.
- * Int must be equal to the variable create.
- *
- * @param text the text on the created label.
- *
- * @return a ConstrainedLabel with the supplied text.
- */
-infix fun Int.label(text: String): ConstrainedLabel {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    return ConstrainedLabel(text)
-}
-
-/**
- * Create a button.
- * Int must be equal to the variable create.
- *
- * @param text the text on the created button.
- *
- * @return a ConstrainedButton with the supplied text.
- */
-infix fun Int.button(text: String): ConstrainedButton {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    return ConstrainedButton(text)
-}
-
-/**
- * Create a checkbox.
- * Int must be equal to the variable create.
- *
- * @param text the text on the created checkbox.
- *
- * @return a ConstrainedCheckbox with the supplied text.
- */
-infix fun Int.checkbox(text: String): ConstrainedCheckbox {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    return ConstrainedCheckbox(text)
-}
-
-/**
- * Create a combobox.
- * Int must be equal to the variable create.
- *
- * @param text an array of the values in the combobox.
- *
- * @return a ConstrainedCombobox with the supplied text values.
- */
-infix fun Int.combobox(text: Array<String>): ConstrainedCombobox {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    return ConstrainedCombobox(text)
-}
-
-/**
- * Create a radio button.
- * Int must be equal to the variable create.
- *
- * @param text the text on the created radio button.
- *
- * @return a ConstrainedRadioButton with the supplied text.
- */
-infix fun Int.radiobutton(text: String): ConstrainedRadioButton {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    return ConstrainedRadioButton(text)
-}
-
-/**
- * Create a list.
- * Int must be equal to the variable create.
- *
- * @param text an array of the values in the list.
- *
- * @return a ConstrainedList with the supplied text values.
- */
-infix fun Int.list(text: Array<String>): ConstrainedList {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    return ConstrainedList(text)
-}
-
-/**
- * Create a spinner.
- * Int must be equal to the variable create.
- *
- * @param text an array of the values in the spinner.
- *
- * @return a ConstrainedSpinner with the supplied text values.
- */
-infix fun Int.spinner(text: Array<String>): ConstrainedSpinner {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    return ConstrainedSpinner(text)
-}
-
-/**
- * Create a spinner.
- * Int must be equal to the variable create.
- *
- * @param min the minimum value of the spinner.
- * @param max the maximum value of the spinner.
- *
- * @return a ConstrainedSlider with the supplied minimum and maximum.
- */
-fun slider(min: Int, max: Int): ConstrainedSlider {
-    val slider = ConstrainedSlider(min, max)
-    slider.majorTickSpacing = max - min
-    slider.minorTickSpacing = (max - min) / 2
-    slider.paintTicks = true
-    slider.paintLabels = true
-    return slider
-}
-
-/**
- * Create a text field.
- * Int must be equal to the variable create.
- *
- * @param content the initial content of the text field.
- *
- * @return a ConstrainedTextField with the supplied content.
- */
-infix fun Int.textfield(content: String): ConstrainedTextField {
-    if(this != create) throw Exception("Use 'create' when creating components")
-    val textfield = ConstrainedTextField(content)
-    return textfield
 }
 
 /**
@@ -242,13 +122,15 @@ fun options(vararg options: String): Array<String> {
  * input: show a textual input dialog with a textbox and an OK button.
  *
  * @param text the text to be shown within the dialog.
+ *
+ * @throws IllegalArgumentException
  */
 infix fun Int.dialog(text: String) {
     when(this) {
         message -> JOptionPane.showMessageDialog(null, text)
         confirm -> JOptionPane.showConfirmDialog(null, text)
         input -> JOptionPane.showInputDialog(null, text)
-        else -> throw Exception("You must specify a dialog type")
+        else -> throw IllegalArgumentException("You must specify a dialog type")
     }
 }
 

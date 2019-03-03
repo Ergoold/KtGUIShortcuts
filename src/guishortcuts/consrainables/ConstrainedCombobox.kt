@@ -1,6 +1,6 @@
 package guishortcuts.consrainables
 
-import guishortcuts.make
+import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
 
@@ -56,8 +56,11 @@ class ConstrainedCombobox(text: Array<String>): JComboBox<String>(text), Constra
  * @param combobox the combobox to return.
  *
  * @return the combobox it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(combobox: ConstrainedCombobox): ConstrainedCombobox {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return combobox
 }
 
@@ -66,9 +69,11 @@ infix fun Int.add(combobox: ConstrainedCombobox): ConstrainedCombobox {
  * Int must be equal to the variable make.
  *
  * @param combobox the combobox to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(combobox: ConstrainedCombobox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     combobox.isEnabled = true
 }
 
@@ -77,8 +82,25 @@ infix fun Int.enabled(combobox: ConstrainedCombobox) {
  * Int must be equal to the variable make.
  *
  * @param combobox the combobox to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(combobox: ConstrainedCombobox) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     combobox.isEnabled = false
+}
+
+/**
+ * Create a combobox.
+ * Int must be equal to the variable create.
+ *
+ * @param text an array of the values in the combobox.
+ *
+ * @return a ConstrainedCombobox with the supplied text values.
+ *
+ * @throws IllegalKeywordException
+ */
+infix fun Int.combobox(text: Array<String>): ConstrainedCombobox {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedCombobox(text)
 }

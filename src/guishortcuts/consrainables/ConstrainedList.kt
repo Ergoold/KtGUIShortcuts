@@ -2,6 +2,7 @@ package guishortcuts.consrainables
 
 import guishortcuts.*
 import java.awt.GridBagConstraints
+import java.lang.IllegalArgumentException
 import javax.swing.*
 
 /**
@@ -52,9 +53,11 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
      * @param kind must be equal to the variable item.
      *
      * @return the current selected item.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun selected(kind: Int): String {
-        if(kind != item) throw Exception("Use 'item' when attempting to get selected list item")
+        if(kind != item) throw IllegalKeywordException("Use 'item' when attempting to get selected list item")
         return selectedValue
     }
     
@@ -64,9 +67,11 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
      * @param kind must be equal to the variable index.
      *
      * @return the current selected item's index.
+     *
+     * @throws IllegalKeywordException
      */
     infix fun selected(kind: Double): Int {
-        if(kind != index) throw Exception("Use 'index' when attempting to get selected list item's index")
+        if(kind != index) throw IllegalKeywordException("Use 'index' when attempting to get selected list item's index")
         return selectedIndex
     }
     
@@ -111,20 +116,17 @@ class ConstrainedList(text: Array<String>): JList<String>(text.toListModel()), C
     }
 }
 
-val single = 0
-val interval = 1
-val free = 2
-val item = 3
-val index = 0.0
-
 /**
  * This function is purely for cosmetic purposes.
  *
  * @param list the list to return.
  *
  * @return the list it was given.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.add(list: ConstrainedList): ConstrainedList {
+    if(this != window) throw IllegalKeywordException("Use 'window' when attempting to add a component to a frame")
     return list
 }
 
@@ -133,9 +135,11 @@ infix fun Int.add(list: ConstrainedList): ConstrainedList {
  * Int must be equal to the variable make.
  *
  * @param list the list to enable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.enabled(list: ConstrainedList) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     list.isEnabled = true
 }
 
@@ -144,9 +148,11 @@ infix fun Int.enabled(list: ConstrainedList) {
  * Int must be equal to the variable make.
  *
  * @param list the list to disable.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.disabled(list: ConstrainedList) {
-    if(this != make) throw Exception("Use 'make' when attempting to set component isEnabled")
+    if(this != make) throw IllegalKeywordException("Use 'make' when attempting to set component isEnabled")
     list.isEnabled = false
 }
 
@@ -158,13 +164,15 @@ infix fun Int.disabled(list: ConstrainedList) {
  * - free: the user may multiple items with no restrictions.
  *
  * @param list the list to change the selection mode of.
+ *
+ * @throws IllegalArgumentException
  */
 infix fun Int.selection(list: ConstrainedList) {
     when (this) {
         single -> list.selectionMode = ListSelectionModel.SINGLE_SELECTION
         interval -> list.selectionMode = ListSelectionModel.SINGLE_INTERVAL_SELECTION
         free -> list.selectionMode = ListSelectionModel.MULTIPLE_INTERVAL_SELECTION
-        else -> throw Exception("Specify a selection mode when attempting to set it.")
+        else -> throw IllegalArgumentException("Specify a selection mode when attempting to set it.")
     }
 }
 
@@ -183,3 +191,18 @@ fun Array<String>.toListModel(): DefaultListModel<String> {
  * An alias for the items function.
  */
 fun items(vararg item: String) = options(*item)
+
+/**
+ * Create a list.
+ * Int must be equal to the variable create.
+ *
+ * @param text an array of the values in the list.
+ *
+ * @return a ConstrainedList with the supplied text values.
+ *
+ * @throws IllegalKeywordException
+ */
+infix fun Int.list(text: Array<String>): ConstrainedList {
+    if(this != create) throw Exception("Use 'create' when creating components")
+    return ConstrainedList(text)
+}
