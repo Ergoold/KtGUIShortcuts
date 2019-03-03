@@ -43,7 +43,7 @@ class ConstrainedPasswordField(text: String): JPasswordField(text), Constrainabl
      */
     infix fun get(kw: Int): String {
         if(kw != content) throw IllegalKeywordException("Use 'content' when getting the content from a password field")
-        return Arrays.toString(password)
+        return String(password)
     }
     
     /**
