@@ -54,8 +54,11 @@ infix fun Int.menuitem(text: String): JMenuItem {
  * @param other should be equal to the variable menu.
  *
  * @return the variable check.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.checkbox(other: Int): Int {
+    if(this != menu) throw IllegalKeywordException("Use 'menu' to create a checkbox item")
     return check
 }
 
@@ -65,8 +68,11 @@ infix fun Int.checkbox(other: Int): Int {
  * @param other should be equal to the variable menu.
  *
  * @return the variable radio.
+ *
+ * @throws IllegalKeywordException
  */
 infix fun Int.radiobutton(other: Int): Double {
+    if(this != menu) throw IllegalKeywordException("Use 'menu' to create a radio button item")
     return radio
 }
 
