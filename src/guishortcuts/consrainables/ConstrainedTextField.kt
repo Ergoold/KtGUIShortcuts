@@ -3,6 +3,7 @@ package guishortcuts.consrainables
 import guishortcuts.*
 import java.awt.GridBagConstraints
 import javax.swing.*
+import javax.swing.event.*
 import kotlin.Exception
 
 /**
@@ -50,7 +51,7 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
      *
      * @throws IllegalKeywordException
      */
-    fun get(kw: Int): String {
+    infix fun get(kw: Int): String {
         if(kw != content) throw IllegalKeywordException("Use 'content' when getting the content from a text field")
         return text
     }
@@ -76,12 +77,24 @@ class ConstrainedTextField(text: String): JTextField(text), Constrainable {
     }
     
     /**
-     * Add an action listener to this text field.
+     * Add a document listener to this text field.
      *
      * @param func the function to execute when this text field's content is changed.
      */
     infix fun does(func: () -> Unit) {
-        addActionListener {func()}
+        document.addDocumentListener(object: DocumentListener {
+            override fun changedUpdate(p0: DocumentEvent?) {
+                func()
+            }
+    
+            override fun insertUpdate(p0: DocumentEvent?) {
+                func()
+            }
+    
+            override fun removeUpdate(p0: DocumentEvent?) {
+                func()
+            }
+        })
     }
 }
 
